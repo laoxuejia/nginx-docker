@@ -137,6 +137,7 @@ RUN apt-get install --no-install-recommends --no-install-suggests -q -y \
     && pip install wheel \
     && pip install supervisor \
     && pip install webssh \
+    && pip install calibre-web \
     && pip install git+https://github.com/coderanger/supervisor-stdout \
     && echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d \
     && rm -rf /etc/nginx/conf.d/default.conf \
