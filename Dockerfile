@@ -137,7 +137,7 @@ RUN apt-get install --no-install-recommends --no-install-suggests -q -y \
     && pip install wheel \
     && pip install supervisor \
     && pip install webssh \
-    && pip install calibreweb \
+    && pip install -r ebooklib.txt \
     && pip install git+https://github.com/coderanger/supervisor-stdout \
     && echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d \
     && rm -rf /etc/nginx/conf.d/default.conf \
@@ -207,15 +207,14 @@ RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
 # COPY ./wkhtmltox.deb /wkhtmltox.deb
 RUN wget "https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.buster_amd64.deb" -O wkhtmltox.deb \
    && apt-get update && apt-get install -y fontconfig libjpeg62-turbo libxrender1 xfonts-utils xfonts-75dpi xfonts-base \
-   && dpkg -i /wkhtmltox.deb \
-   && rm -rf /wkhtmltox.deb
+   && dpkg -i /wkhtmltox.deb
 
 # Clean up
 RUN rm -rf /tmp/pear \
     && apt-get purge -y --auto-remove $buildDeps \
     && apt-get clean \
     && apt-get autoremove \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* /ebooklib.txt /wkhtmltox.deb
 
 # htmltopdf font
 COPY ./SIMSUN.TTC /usr/share/fonts
