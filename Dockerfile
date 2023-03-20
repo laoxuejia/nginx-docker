@@ -48,6 +48,7 @@ RUN buildDeps='curl gcc g++ make autoconf libc-dev zlib1g-dev pkg-config' \
             libmagickwand-dev \
             imagemagick \
             inetutils-ping \
+            chromium-browser \
             nginx=${NGINX_VERSION}
 
 # Install php8 php7 pip
