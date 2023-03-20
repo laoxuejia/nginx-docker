@@ -196,7 +196,7 @@ COPY html /usr/share/nginx/html
 
 # Copy Scripts
 COPY ./start.sh /start.sh
-COPY --from=ebooktool /root-layer/ /
+# abandon this:COPY --from=ebooktool /root-layer/ /
 RUN chmod -R 777 ./start.sh /etc/supervisor/supervisord.conf
 
 EXPOSE 80
