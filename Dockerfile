@@ -4,12 +4,12 @@ LABEL maintainer="763658875@qq.com"
 
 # Let the container know that there is no tty
 ENV DEBIAN_FRONTEND noninteractive
-ENV NGINX_VERSION 1.21.6-1~bullseye
+ENV NGINX_VERSION 1.25.2-1~bullseye
 ENV php8_conf /etc/php/8.1/fpm/php.ini
 ENV fpm8_conf /etc/php/8.1/fpm/pool.d/www.conf
 ENV php7_conf /etc/php/7.4/fpm/php.ini
 ENV fpm7_conf /etc/php/7.4/fpm/pool.d/www.conf
-ENV COMPOSER_VERSION 2.2.7
+ENV COMPOSER_VERSION 2.5.8
 
 # Install Basic Requirements nginx
 RUN buildDeps='curl gcc g++ make autoconf libc-dev zlib1g-dev pkg-config' \
@@ -163,7 +163,7 @@ RUN apt-get install --no-install-recommends --no-install-suggests -q -y \
     && rm -rf /tmp/composer-setup.php
 
 # Install nodejs npm yarn
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get update \
     && apt-get install -y nodejs \
     && curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | tee /usr/share/keyrings/yarnkey.gpg >/dev/null \
